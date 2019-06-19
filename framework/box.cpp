@@ -1,10 +1,12 @@
 #include "box.hpp"
 #include <glm/vec3.hpp>
+#include <cmath>
+
 
 Box::Box() :      // default-constr-Sphere
   Shape::Shape{"Box"},
-  min_ {0.0f, 0.0f},
-  max_ {5.0f, 5.0}{}
+  min_ {0.0f, 0.0f, 0.0f},
+  max_ {1.0f, 1.0f,1.0}{}
 
 Box::Box(glm::vec3 const& min,glm::vec3 const& max) :      // custom-constr-Sphere
   Shape::Shape{"Box"},
@@ -13,12 +15,10 @@ Box::Box(glm::vec3 const& min,glm::vec3 const& max) :      // custom-constr-Sphe
 
 
 float Box::area() const {        // Formel checken !!!
-  return M_PI * radius_ * radius_;
+  return 1.0f;
 }
 
-float Box::volume() const override{  // Formel checken !!!
-    return 1.0;
+float Box::volume() const {  // Formel checken !!!
+    return 1.0f;
 }
 
-public:
-    Box::Box(); // Defaul-constr., mit default-Werten

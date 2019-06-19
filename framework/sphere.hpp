@@ -15,6 +15,6 @@ class Sphere : public Shape{
     private: //  private auch bei ableitenden Klassen oder protected oder auch public ??
     glm::vec3 center_; 
     float radius_;
-}
+};
 
 #endif // SPHERE_HPP
