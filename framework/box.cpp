@@ -15,10 +15,10 @@ Box::Box(glm::vec3 const& min,glm::vec3 const& max) :      // custom-constr-Sphe
 
 
 float Box::area() const {        // Formel checken !!!
-  return 1.0f;
+  return abs(-1.0f);                  // abs-standarsfkt für betragsausgabe aus cmath librarys
 }
 
 float Box::volume() const {  // Formel checken !!!
-    return 1.0f;
+    return abs(1.0f);
 }
 
