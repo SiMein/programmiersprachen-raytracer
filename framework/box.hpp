@@ -1,14 +1,17 @@
 #ifndef BOX_HPP
 #define BOX_HPP
 
+#include "shape.hpp"
+#include <glm/vec3.hpp>
+
 class Box : public Shape { // abgeleitete Klasse und ableitende Klasse
     
     public:
     Box(); // Defaul-constr., mit default-Werten
     Box(glm::vec3 const& min_,glm::vec3 const& max_); // Custom-constr.
 
-    /* virtual */ void area() const override ;
-    /* virtual */ void volume () const override ;
+    /* virtual */ float area() const override ;
+    /* virtual */ float volume () const override ;
 
 
     

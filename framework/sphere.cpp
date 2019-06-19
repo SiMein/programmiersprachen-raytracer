@@ -1,4 +1,5 @@
 #include "sphere.hpp"
+#include <cmath>
 #include <glm/vec3.hpp>
 
 Sphere::Sphere() :      // default-constr-Sphere
@@ -13,11 +14,11 @@ Sphere::Sphere(glm::vec3 const& center, float radius) :      // custom-constr-Sp
 
 
 float Sphere::area() const {        // Formel checken !!!
-  return M_PI * radius_ * radius_;
+  return 4*M_PI * pow(get_radius(), 2);
 }
 
 float Sphere::volume() const override{  // Formel checken !!!
-    return 1.0;
+    return (4.0f/3.0f)* M_PI * pow(get_radius(), 3);
 }
 
 public:

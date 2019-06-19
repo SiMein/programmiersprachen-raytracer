@@ -1,6 +1,9 @@
 #ifndef SPHERE_HPP
 #define SPHERE_HPP
 
+#include "shape.hpp"
+#include <glm/vec3.hpp>
+
 class Sphere : public Shape{
     public:
     Sphere(); // Default-constr.
