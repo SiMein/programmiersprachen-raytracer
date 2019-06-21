@@ -1,5 +1,6 @@
 #include "sphere.hpp"
 #include <glm/vec3.hpp>
+#include <iostream>
 
 Sphere::Sphere() :      // default-constr-Sphere
   Shape::Shape{"Sphere"},
@@ -13,9 +14,17 @@ Sphere::Sphere(glm::vec3 const& center, float radius) :      // custom-constr-Sp
 
 
 float Sphere::area() const {        // Formel checken !!!
+  if(radius_ < 0){
+    std::cout << "\nyour radius -it is negativ !\n";
+    return -1.0f;
+  }
   return 4*M_PI * std::pow(radius_, 2);
 }
 
 float Sphere::volume() const{  // Formel checken !!!
-    return (4.0f/3.0f)* M_PI * std::pow(radius_, 3);
+  if(radius_ < 0){
+    std::cout << "\nyour radius -it is negativ !\n";
+    return -1.0f;
+  }
+  return (4.0f/3.0f)* M_PI * std::pow(radius_, 3);
 }
