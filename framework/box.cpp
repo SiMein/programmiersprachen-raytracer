@@ -5,12 +5,17 @@
 
 
 Box::Box() :      // default-constr-Sphere
-  Shape::Shape{"Box"},
+  Shape::Shape{"Box"},    // hier uebertragung des Strings "Box" in die Basisklasse als name-parameter
   min_ {0.0f, 0.0f, 0.0f},
   max_ {1.0f, 1.0f,1.0}{}
 
-Box::Box(glm::vec3 const& min,glm::vec3 const& max) :      // custom-constr-Sphere
+Box::Box(glm::vec3 const& min,glm::vec3 const& max) :   // custom-constr-Sphere 2 param
   Shape::Shape{"Box"},
+  min_ {min},
+  max_ {max}{}
+
+Box::Box(glm::vec3 const& min,glm::vec3 const& max,std::string name,Color color) :  // custom-constr-Sphere 4 param
+  Shape::Shape{name,color},  // Parameter werden weitergereicht an den konstr der basisklasse für die entspr. parameter
   min_ {min},
   max_ {max}{}
 

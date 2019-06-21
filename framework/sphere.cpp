@@ -7,8 +7,13 @@ Sphere::Sphere() :      // default-constr-Sphere
   center_     {0.0f, 0.0f, 0.0f},
   radius_     {1.0f}{}
 
-Sphere::Sphere(glm::vec3 const& center, float radius) :      // custom-constr-Sphere
+Sphere::Sphere(glm::vec3 const& center,float radius) :      // custom-constr-Sphere  2 parameter
   Shape::Shape{"Sphere"},
+  center_ {center},
+  radius_ {radius}{}
+
+Sphere::Sphere(glm::vec3 const& center,float radius,std::string name,Color color) :      // custom-constr-Sphere  4 parameter
+  Shape::Shape{name, color},  // Parameter werden weitergereicht an den konstr der basisklasse für die entspr. parameter
   center_ {center},
   radius_ {radius}{}
 
