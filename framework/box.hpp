@@ -13,7 +13,7 @@ class Box : public Shape { // abgeleitete Klasse und ableitende Klasse
 
     /* virtual */ float area() const override ;
     /* virtual */ float volume () const override ;
-
+    /* virtual */ std::ostream& print(std::ostream& os) const override;
 
   
     private:  //  private auch bei ableitenden Klassen oder protected oder auch public ??

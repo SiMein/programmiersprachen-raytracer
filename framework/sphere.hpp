@@ -10,8 +10,9 @@ class Sphere : public Shape{
     Sphere(glm::vec3 const& center, float radius);  // Custom-constr. 2 param
     Sphere(glm::vec3 const& center,float radius,std::string name,Color color); // Custom-constr-  4 param
 
-    /* virtual */float area() const override ;
-    /* virtual */float volume () const override ;
+    /* virtual */float area() const override;
+    /* virtual */float volume() const override;
+    /* virtual */std::ostream& print(std::ostream& os) const override;
 
     private: //  private auch bei ableitenden Klassen oder protected oder auch public ??
     glm::vec3 center_; 

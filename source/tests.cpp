@@ -5,8 +5,8 @@
 
 #include <catch.hpp>
 
-// * --------------- 5.1, 5.2, 5.3 --------------- * //
-TEST_CASE("TestCase_1    5.1, 5.2, 5.3", "[aufgabe 5.1,5.2,5.3]") {
+// * --------------- 5.1, 5.2, 5.3, 5.4 --------------- * //
+TEST_CASE("TestCase_1    5.1, 5.2, 5.3, 5.4", "[aufgabe 5.1,5.2,5.3,5.4]") {
 
 
   Sphere sph1;                  // check area and volume-method with default-constr
@@ -37,7 +37,16 @@ TEST_CASE("TestCase_1    5.1, 5.2, 5.3", "[aufgabe 5.1,5.2,5.3]") {
   Sphere sph4{{1.0,1.0,1.0},{11.0},"heinz", co1}; 
   Box bo4{{0.0f, 0.0f, 0.0f},{1.0f, 1.0f,1.0},"hugo",co1}; 
   //REQUIRE(bo1.name_ == "hugo"); // Attributzugriff auf name von abgeleiteter klasse hindurch zur basisklasse mgl., dafür aber 
- //muesste umstellen von protected auf public, oder ueber getter-methode in kindklasse weil d test klasse hier sich ausserhalb befindet
+  //muesste umstellen von protected auf public, oder ueber getter-methode in kindklasse weil d test klasse hier sich ausserhalb befindet
+  //dafuer print ausgabe  aufg 5.4. vorgesehen ...
+
+  std::cout << "\nprintout by call method print() \n";
+  sph4.print(std::cout); // Direkter aufruf der printmethode --achtung in-parameter hier beachten 
+  bo2.print(std::cout);  
+  std::cout << "\nprintout by call operator << \n";
+  std::cout << sph4 << "\n";
+  std::cout << bo2 << "\n";
+
 }
 
 
