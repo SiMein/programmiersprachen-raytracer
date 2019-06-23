@@ -4,9 +4,11 @@
 #include <box.hpp>
 
 #include <catch.hpp>
+#include <glm/glm.hpp>
+#include <glm/gtx/intersect.hpp>
 
-// * --------------- 5.1, 5.2, 5.3, 5.4 --------------- * //
-TEST_CASE("TestCase_1    5.1, 5.2, 5.3, 5.4", "[aufgabe 5.1,5.2,5.3,5.4]") {
+// * --------------- 5.1, 5.2, 5.3, 5.4, 5.5 --------------- * //
+TEST_CASE("TestCase_1    5.1, 5.2, 5.3, 5.4, 5.5", "[aufgabe 5.1,5.2,5.3,5.4,5.5]") {
 
 
   Sphere sph1;                  // check area and volume-method with default-constr
@@ -41,17 +43,41 @@ TEST_CASE("TestCase_1    5.1, 5.2, 5.3, 5.4", "[aufgabe 5.1,5.2,5.3,5.4]") {
   //dafuer print ausgabe  aufg 5.4. vorgesehen ...
 
   std::cout << "\nprintout by call method print() \n";
+  sph1.print(std::cout);
   sph4.print(std::cout); // Direkter aufruf der printmethode --achtung in-parameter hier beachten 
+  bo1.print(std::cout); 
   bo2.print(std::cout);  
   std::cout << "\nprintout by call operator << \n";
+  std::cout << sph1 << "\n";
   std::cout << sph4 << "\n";
+  std::cout << bo1 << "\n";
   std::cout << bo2 << "\n";
 
 }
 
 
-// * --------------- 5.4--------------- * //
-TEST_CASE("TestCase_2    5.4", "[aufgabe 5.4]") {
+TEST_CASE ("intersect_ray_sphere", "[intersect]"){
+// Ray
+glm::vec3 ray_origin{0.0f, 0.0f, 0.0f};
+// ray direction has to be normalized !
+// you can use :
+// v = glm :: normalize ( some_vector )
+glm::vec3 ray_direction{0.0f, 0.0f, 1.0f};
+// Sphere
+glm::vec3 sphere_center{0.0f ,0.0f, 5.0f};
+float sphere_radius{1.0f};
+float distance = 0.0f;
+auto result = glm::intersectRaySphere (ray_origin ,ray_direction ,sphere_center ,
+sphere_radius * sphere_radius , // squared radius !!!
+distance );
+
+REQUIRE(distance == Approx (4.0f));
+
+}
+
+
+// * --------------- 5.x--------------- * //
+TEST_CASE("TestCase_2    5.x", "[aufgabe 5.x]") {
 
 
 }
