@@ -34,6 +34,11 @@ float Sphere::volume() const{  // Formel checken !!!
   return (4.0f/3.0f)* M_PI * std::pow(radius_, 3);
 }
 
+HitPoint Sphere::intersect(Ray const& r) const{
+  HitPoint hp;
+  return hp;
+}
+
 std::ostream& Sphere::print(std::ostream& os) const{ 
   Shape::print(os);   // print methode der basisklasse wir mit augerufen -für basis attributausgabe
   os << "Center : " << center_.x << "\t" << center_.y << "\t" << center_.z << "\n"

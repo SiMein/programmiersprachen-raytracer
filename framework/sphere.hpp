@@ -3,6 +3,8 @@
 
 #include "shape.hpp"
 #include <glm/vec3.hpp>
+#include "hitPoint.hpp"
+#include "ray.hpp"
 
 class Sphere : public Shape{
     public:
@@ -13,6 +15,7 @@ class Sphere : public Shape{
     /* virtual */float area() const override;
     /* virtual */float volume() const override;
     /* virtual */std::ostream& print(std::ostream& os) const override;
+    HitPoint intersect(Ray const& r) const;
 
     private: //  private auch bei ableitenden Klassen oder protected oder auch public ??
     glm::vec3 center_; 
