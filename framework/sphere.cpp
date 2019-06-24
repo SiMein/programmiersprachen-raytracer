@@ -34,9 +34,12 @@ float Sphere::volume() const{  // Formel checken !!!
   return (4.0f/3.0f)* M_PI * std::pow(radius_, 3);
 }
 
-HitPoint Sphere::intersect(Ray const& r) const{
-  HitPoint hp;
-  return hp;
+// rückgabe typ bool oder HitPoint  ?!   freie function ??
+bool Sphere::intersect(Ray const& r, HitPoint& h) const{
+                      //HitPoint Sphere::intersect(Ray const& r, float dist) const{
+  bool crossed = glm::intersectRaySphere(r.origin,glm::normalize(r.direction),center_,(radius_*radius_),h.t);
+  h.cross = crossed;
+  return crossed;
 }
 
 std::ostream& Sphere::print(std::ostream& os) const{ 

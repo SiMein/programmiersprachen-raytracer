@@ -73,7 +73,18 @@ distance );
 
 REQUIRE(distance == Approx (4.0f));
 
+Color co1{0.5,0.5,0.5}; 
+HitPoint hp1;
+Ray r1{{0.0f,0.0f,0.0f},{1.0f,0.0f,0.0f}};
+Sphere s1{{1.0,0.0,0.0},{0.5},"franz", co1};
+
+REQUIRE(s1.intersect(r1,hp1) == true);
+
+
+
 }
+
+
 
 
 // * --------------- 5.x--------------- * //
