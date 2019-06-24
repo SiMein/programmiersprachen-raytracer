@@ -1,1 +1,1 @@
-#include "hitPoint.hpp"
+#include "hitPoint.hpp"  // hitPoint.hpp  nicht notwendig , da in diesem fall alles nötige in ray.hpp stehen kann

@@ -14,8 +14,8 @@
 
 struct Color
 {
-  Color(float red, float green, float blue) : r(red), g(green), b(blue) {}
-
+  //Color(float red, float green, float blue) : r(red), g(green), b(blue) {}  // dieser Konstr nur als wenn class statt struct 
+                                                                              // entspr. aufrufende klassen wurden angepasst 
   friend std::ostream& operator<<(std::ostream& os, Color const& c)
   {
     os << "(" << c.r << "," << c.g << "," << c.b << ")\n";

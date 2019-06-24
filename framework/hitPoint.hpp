@@ -12,7 +12,7 @@ struct HitPoint {
     std::string name;
     Color co{Color{0.0,0.0,0.0}};
     glm::vec3 crossPoint;
-    // direction  to do
+    glm::vec3 direction;
 };
 
 #endif // HITPOINT_HPP
