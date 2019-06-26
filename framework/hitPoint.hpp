@@ -7,12 +7,12 @@
 #include <iostream>
 
 struct HitPoint {
-    bool cross;
-    float t;
-    std::string name;
+    bool cross = false;
+    float t = 0.0;
+    std::string name = "default-HitPoint";
     Color co{Color{0.0,0.0,0.0}};
-    glm::vec3 crossPoint;
-    glm::vec3 direction;
+    glm::vec3 crossPoint{0.0,0.0,0.0};
+    glm::vec3 direction{0.0,0.0,0.0};
 };
 
 #endif // HITPOINT_HPP

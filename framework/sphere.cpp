@@ -4,7 +4,7 @@
 
 Sphere::Sphere() :      // default-constr-Sphere
   Shape::Shape{"Sphere"},
-  center_     {0.0f, 0.0f, 0.0f},
+  center_{},    // {0.0f, 0.0f, 0.0f},
   radius_     {1.0f}{}
 
 Sphere::Sphere(glm::vec3 const& center,float radius) :      // custom-constr-Sphere  2 parameter
@@ -34,18 +34,22 @@ float Sphere::volume() const{  // Formel checken !!!
   return (4.0f/3.0f)* M_PI * std::pow(radius_, 3);
 }
 
-// rückgabe typ bool oder HitPoint  ?!   freie function ??
-bool Sphere::intersect(Ray const& r, HitPoint& h) const{
-                      //HitPoint Sphere::intersect(Ray const& r, float dist) const{
-  bool crossed = glm::intersectRaySphere(r.origin,glm::normalize(r.direction),center_,(radius_*radius_),h.t);
-  h.cross = crossed;
-  h.t = 0.0f;  // distance to cut
-  h.name = name_;  // name des objektes das geschnitten wurde, auf dem hier aufgerufenen sphere
-  h.co = color_;   // color des objektes das geschnitten wurde, auf dem hier aufgerufenen sphere
-  glm::vec3 cro_p; // crosspoint
-  glm::vec3 direc; // dircetion
-
-  return crossed;
+// warum t  distance auf 0 setzen ??
+HitPoint Sphere::intersect(Ray const& r) const{
+  float t1 = 0.0f;
+  bool crossed = glm::intersectRaySphere(r.origin,glm::normalize(r.direction),center_,(radius_*radius_),t1);
+  HitPoint h;
+  if (crossed){
+    h.cross = crossed;  // bool
+    h.t = 0.0f;  // distance to cut
+    h.name = name_;  // name des objektes das geschnitten wurde, auf d hier aufgerufenen sphere
+    h.co = color_;   // color des objektes das geschnitten wurde, auf d hier aufgerufenen sphere
+    //glm::vec3 cro_p =
+    h.crossPoint = r.origin + t1 * r.direction;  // berechnung nach vorgeg. formel aus aufg 5.6
+    //glm::vec3 cro_p; // crosspoint
+    h.direction = r.direction; // direction
+  }
+  return h;
 }
 
 std::ostream& Sphere::print(std::ostream& os) const{ 

@@ -18,7 +18,7 @@ class Shape {
     protected:
                                 // Basisattribute --auch für abgeleitete Klassen hier init.
     std::string name_;
-    Color color_{0.0,0.0,0.0}; // da ein struct, muss init direkt erfolgen in cpp und hpp !!!!
+    Color color_; // da ein struct, muss init direkt erfolgen in cpp und hpp !!!!
 };
 
 std::ostream& operator <<(std::ostream& os,Shape const& s);  // freie fkt für shape printout

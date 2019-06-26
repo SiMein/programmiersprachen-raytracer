@@ -16,7 +16,7 @@ class Sphere : public Shape{
     /* virtual */float area() const override;
     /* virtual */float volume() const override;
     /* virtual */std::ostream& print(std::ostream& os) const override;
-    bool intersect(Ray const& r, HitPoint& h) const;
+    HitPoint intersect(Ray const& r) const;
 
     private: //  private auch bei ableitenden Klassen oder protected oder auch public ??
     glm::vec3 center_; 
