@@ -39,6 +39,12 @@ bool Sphere::intersect(Ray const& r, HitPoint& h) const{
                       //HitPoint Sphere::intersect(Ray const& r, float dist) const{
   bool crossed = glm::intersectRaySphere(r.origin,glm::normalize(r.direction),center_,(radius_*radius_),h.t);
   h.cross = crossed;
+  h.t = 0.0f;  // distance to cut
+  h.name = name_;  // name des objektes das geschnitten wurde, auf dem hier aufgerufenen sphere
+  h.co = color_;   // color des objektes das geschnitten wurde, auf dem hier aufgerufenen sphere
+  glm::vec3 cro_p; // crosspoint
+  glm::vec3 direc; // dircetion
+
   return crossed;
 }
 
