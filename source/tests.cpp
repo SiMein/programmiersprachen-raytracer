@@ -128,6 +128,13 @@ TEST_CASE("TestCase_3    5.7", "[aufgabe 5.7]") {
 
   // Im Kontext der Vererbung erlauben statisch typisierte OO-Sprachen, dass die
   // dynamische Klasse einer Variablen eine von der statischen Klasse abgeleitete Klasse sein kann.
+  
+  //std::shared_ptr <Sphere>s3 = std::make_shared <Shape>(position, 1.2f,"sphere1", red);
+   // zu s3 --das würde nicht gehen ,da für shape klasse nur konstruktor mit 2 parametern vorhanden
+
+  //std::shared_ptr <Sphere>s4 = std::make_shared <Shape>();
+   // zu s4 - das compiled garnicht erst richtig ,--fehler  tests.cpp:135:56: error: conversion from ‘shared_ptr<Shape>’ to non-scalar type ‘shared_ptr<Sphere>’ requested
+   //std::shared_ptr <Sphere>s4 = std::make_shared <Shape>();
 
   s1->print(std::cout);
   s2->print(std::cout);
