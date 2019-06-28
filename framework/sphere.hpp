@@ -12,6 +12,7 @@ class Sphere : public Shape{
     Sphere(); // Default-constr.
     Sphere(glm::vec3 const& center, float radius);  // Custom-constr. 2 param
     Sphere(glm::vec3 const& center,float radius,std::string name,Color color); // Custom-constr-  4 param
+    ~Sphere();
 
     /* virtual */float area() const override;
     /* virtual */float volume() const override;

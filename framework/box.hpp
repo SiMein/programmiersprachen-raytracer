@@ -10,6 +10,7 @@ class Box : public Shape { // abgeleitete Klasse und ableitende Klasse
     Box(); // Defaul-constr., mit default-Werten
     Box(glm::vec3 const& min_,glm::vec3 const& max_); // Custom-constr.2 param
     Box(glm::vec3 const& min_,glm::vec3 const& max_,std::string name_,Color color_); // Custom-constr.4 param
+    ~Box();
 
     /* virtual */ float area() const override ;
     /* virtual */ float volume () const override ;

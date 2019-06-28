@@ -9,6 +9,7 @@ class Shape {
     public:
     Shape(std::string const& name = "default-name-shape"); // default-constr. wenn kein parameter -defaultname zuweisung, sonst parametername
     Shape(std::string const& name, Color const& color);
+    virtual ~Shape(); // wie gewohnt auch bei destructor in .hpp die Signatur und genaue implement. in .cpp 
 
     virtual float area() const = 0; // method wird hier in abstrakter Klasse zugesichert, spezifische Implement dann in child-classes 
     virtual float volume() const = 0; // dito                       // daher spez. Implem in cpp von shape NICHT nötig 

@@ -5,17 +5,21 @@
 Sphere::Sphere() :      // default-constr-Sphere
   Shape::Shape{"Sphere"},
   center_{},    // {0.0f, 0.0f, 0.0f},
-  radius_     {1.0f}{}
+  radius_     {1.0f}{std::cout << "I am the Sphere-construktor !";}
 
 Sphere::Sphere(glm::vec3 const& center,float radius) :      // custom-constr-Sphere  2 parameter
   Shape::Shape{"Sphere"},
   center_ {center},
-  radius_ {radius}{}
+  radius_ {radius}{std::cout << "I am the Sphere-contruktor !";}
 
 Sphere::Sphere(glm::vec3 const& center,float radius,std::string name,Color color) :      // custom-constr-Sphere  4 parameter
   Shape::Shape{name, color},  // Parameter werden weitergereicht an den konstr der basisklasse für die entspr. parameter
   center_ {center},
-  radius_ {radius}{}
+  radius_ {radius}{std::cout << "I am the Sphere-contruktor !";}
+
+Sphere::~Sphere(){
+  std::cout << "I am the Sphere-Destruktor !";
+}
 
 
 float Sphere::area() const {        // Formel checken !!!
