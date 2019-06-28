@@ -141,7 +141,68 @@ TEST_CASE("TestCase_3    5.7", "[aufgabe 5.7]") {
 
 }
 
+// * --------------- 5.8--------------- * //
+TEST_CASE("TestCase_4    5.8", "[aufgabe 5.8]") {
 
+  std::cout << "\n  aufg 5.8  \n";
+
+  Color red{255,0, 0};
+  glm::vec3 position{0.0f,0.0f,0.0f};
+
+  std::cout << "\n  create s1   \n";
+  Sphere* s1 = new Sphere{position ,1.5f,"sphere0",red} ; // per * erzeugung des objekts auf dem freestore
+  std::cout << "\n  create s2   \n";
+  Shape* s2 = new Sphere{position ,1.5f,"sphere1",red};
+  std::cout << "\n  create b1   \n";
+  Box* b1 = new Box; // per * erzeugung des objekts auf dem freestore
+  std::cout << "  create b2   \n";
+  Shape* b2 = new Box;
+
+  std::cout << " printout s1 und s2    \n";
+  s1->print(std::cout);
+  s2->print(std::cout);
+
+  std::cout << "\ndelete s1 : \n";
+  delete s1;
+  std::cout << "\ndelete s2 : \n";
+  delete s2;
+
+  std::cout << "\ndelete b1 : \n";
+  delete b1;
+  std::cout << "\ndelete b2 : \n";
+  delete b2;
+/*
+bei erzeugung eines objektes wird immer standardmaessig erst der basisklassenkonstructor 
+, dann der kinsklassenkonstructor aufgerufen */
+/* 
+ wenn kein virtual vor destruktor in shape, dann ausgabe:
+delete s1 : 
+I am the Sphere-Destruktor !I am the Shape-Destruktor !
+delete s2 : 
+I am the Shape-Destruktor !  
+somit ist das verhalten des destructors davon abhängig davon wie das objekt erzeugt wurde !!
+schlecht ,weil unberechenbar und im schlechten fall wird geloeschter speicher so weiter blockiert
+*/
+/*
+wenn virtual vorm destruktor in shape steht, dann ausgabe:
+delete s1 : 
+I am the Sphere-Destruktor !I am the Shape-Destruktor !
+delete s2 : 
+I am the Sphere-Destruktor !I am the Shape-Destruktor !
+delete b1 : 
+I am the Box-Destruktor !I am the Shape-Destruktor !
+delete b2 : 
+I am the Box-Destruktor !I am the Shape-Destruktor !
+somit unabhaenig von erzeugung des objektes ein gleichmaessig geregeltes destruktor-verhalten, gut
+von unten nach oben --erst kindklasse dann elternklasse  !!
+*/  
+
+//1) delete expression        Destroys one non-array object created by a new-expression
+//2) delete [] expression     Destroys an array created by a new[]-expression
+
+// verhalten d construktors gehts schrittweise tiefer in die klassen, der 
+// destructor genau entgegen schrittweise wieder herausgehen 
+}
 int main(int argc, char *argv[])
 {
   return Catch::Session().run(argc, argv);
