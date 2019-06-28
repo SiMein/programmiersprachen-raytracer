@@ -56,70 +56,85 @@ TEST_CASE("TestCase_1    5.1, 5.2, 5.3, 5.4, 5.5", "[aufgabe 5.1,5.2,5.3,5.4,5.5
 }
 
 
-TEST_CASE ("intersect_ray_sphere", "[intersect]"){
-// Ray
-glm::vec3 ray_origin{0.0f, 0.0f, 0.0f};
-// ray direction has to be normalized !
-// you can use :
-// v = glm :: normalize ( some_vector )
-glm::vec3 ray_direction{0.0f, 0.0f, 1.0f};
-// Sphere
-glm::vec3 sphere_center{0.0f ,0.0f, 5.0f};
-float sphere_radius{1.0f};
-float distance = 0.0f;
-auto result = glm::intersectRaySphere (ray_origin ,ray_direction ,sphere_center ,
-sphere_radius * sphere_radius , // squared radius !!!
-distance );
+TEST_CASE (" TestCase_2    intersect_ray_sphere", "[intersect]"){
+  // Ray
+  glm::vec3 ray_origin{0.0f, 0.0f, 0.0f};
+  // ray direction has to be normalized !
+  // you can use :
+  // v = glm :: normalize ( some_vector )
+  glm::vec3 ray_direction{0.0f, 0.0f, 1.0f};
+  // Sphere
+  glm::vec3 sphere_center{0.0f ,0.0f, 5.0f};
+  float sphere_radius{1.0f};
+  float distance = 0.0f;
+  auto result = glm::intersectRaySphere (ray_origin ,ray_direction ,sphere_center ,
+  sphere_radius * sphere_radius , // squared radius !!!
+  distance );
 
-REQUIRE(distance == Approx (4.0f));
+  REQUIRE(distance == Approx (4.0f));
 
-Color co1{1.0f,1.0f,1.0f}; 
-Ray r1{{0.0f,0.0f,0.0f},{1.0f,0.0f,0.0f}};
-Sphere s1{{1.0,0.0,0.0},{0.5},"franz", co1};
+  Color co1{1.0f,1.0f,1.0f}; 
+  Ray r1{{0.0f,0.0f,0.0f},{1.0f,0.0f,0.0f}};
+  Sphere s1{{1.0,0.0,0.0},{0.5},"franz", co1};
 
-std::cout << s1 << "\n  this last was s1 print out \n";
-HitPoint h1;
-h1 = s1.intersect(r1);      // check, ob attribute in hitpoint uebertragen wurden bei treffer !!
-REQUIRE(h1.cross == true);
-REQUIRE(h1.t == 0.0f);
-REQUIRE(h1.name == "franz");
-REQUIRE(h1.co.r == 1.0f);   // Color-einzel-attrib-pruefung
-REQUIRE(h1.co.g == 1.0f);
-REQUIRE(h1.co.b == 1.0f);
-REQUIRE(h1.crossPoint.x == 0.5f);   // vec3-einzel-attrib-pruefung
-REQUIRE(h1.crossPoint.y == 0.0f);
-REQUIRE(h1.crossPoint.z == 0.0f);
-REQUIRE(h1.direction.x == 1.0f);   // vec3-einzel-attrib-pruefung
-REQUIRE(h1.direction.y == 0.0f);
-REQUIRE(h1.direction.z == 0.0f);
+  std::cout << s1 << "\n  this last was s1 print out \n";
+  HitPoint h1;
+  h1 = s1.intersect(r1);      // check, ob attribute in hitpoint uebertragen wurden bei treffer !!
+  REQUIRE(h1.cross == true);
+  REQUIRE(h1.t == 0.0f);
+  REQUIRE(h1.name == "franz");
+  REQUIRE(h1.co.r == 1.0f);   // Color-einzel-attrib-pruefung
+  REQUIRE(h1.co.g == 1.0f);
+  REQUIRE(h1.co.b == 1.0f);
+  REQUIRE(h1.crossPoint.x == 0.5f);   // vec3-einzel-attrib-pruefung
+  REQUIRE(h1.crossPoint.y == 0.0f);
+  REQUIRE(h1.crossPoint.z == 0.0f);
+  REQUIRE(h1.direction.x == 1.0f);   // vec3-einzel-attrib-pruefung
+  REQUIRE(h1.direction.y == 0.0f);
+  REQUIRE(h1.direction.z == 0.0f);
 
-HitPoint h2;
-Color co2{0.7f,0.7f,0.7f}; 
-Sphere s2{{5.5,1.0,8.0},{1.0},"schorsch", co2};
-h2 = s2.intersect(r1);      // check, ob attribute in hitpoint uebertragen wurden wenn KEIN !! treffer
-REQUIRE(h2.cross == false);
-REQUIRE(h2.t == 0.0f);
-REQUIRE(h2.name == "default-HitPoint");
-REQUIRE(h2.co.r == 0.0f);   // Color-einzel-attrib-pruefung
-REQUIRE(h2.co.g == 0.0f);
-REQUIRE(h2.co.b == 0.0f);
-REQUIRE(h2.crossPoint.x == 0.0f);   // vec3-einzel-attrib-pruefung
-REQUIRE(h2.crossPoint.x == 0.0f);
-REQUIRE(h2.crossPoint.x == 0.0f);
-glm::vec3 test_vec3{0.0,0.0,0.0};   // alternative. -zu erwartendes Objekt vom typ vec3 erstellt
-REQUIRE(h2.direction == test_vec3); // dann (gesamt)-vergleich zweier vec3 objekte
+  HitPoint h2;
+  Color co2{0.7f,0.7f,0.7f}; 
+  Sphere s2{{5.5,1.0,8.0},{1.0},"schorsch", co2};
+  h2 = s2.intersect(r1);      // check, ob attribute in hitpoint uebertragen wurden wenn KEIN !! treffer
+  REQUIRE(h2.cross == false);
+  REQUIRE(h2.t == 0.0f);
+  REQUIRE(h2.name == "default-HitPoint");
+  REQUIRE(h2.co.r == 0.0f);   // Color-einzel-attrib-pruefung
+  REQUIRE(h2.co.g == 0.0f);
+  REQUIRE(h2.co.b == 0.0f);
+  REQUIRE(h2.crossPoint.x == 0.0f);   // vec3-einzel-attrib-pruefung
+  REQUIRE(h2.crossPoint.x == 0.0f);
+  REQUIRE(h2.crossPoint.x == 0.0f);
+  glm::vec3 test_vec3{0.0,0.0,0.0};   // alternative. -zu erwartendes Objekt vom typ vec3 erstellt
+  REQUIRE(h2.direction == test_vec3); // dann (gesamt)-vergleich zweier vec3 objekte
 
+}
+
+// * --------------- 5.7--------------- * //
+TEST_CASE("TestCase_3    5.7", "[aufgabe 5.7]") {
+
+  std::cout << "\n  aufg 5.7  \n";
+  Color red {255,0,0};
+  glm::vec3 position{0.0f,0.0f,0.0f};
+
+  // links statischer Typ             rechts dynamischer Typ
+  std::shared_ptr <Sphere>s1 = std::make_shared <Sphere>(position, 1.2f,"sphere0", red);
+    // zu s1 - direkter aufruf der sphereprintmethode, da auch mit sphere typisiert
+  std::shared_ptr <Shape>s2 = std::make_shared <Sphere>(position, 1.2f,"sphere1", red);
+    // zu s2 - statischer basisklassentyp , zur laufzeit wird mittels virtueller methode print 
+    // die tatsaechliche klasse bzw abgeleitete klasse aufgerufen (dynamisch) 
+// somit letzlich in beiden fällen printausgabe von printmethode aus sphere
+
+  // Im Kontext der Vererbung erlauben statisch typisierte OO-Sprachen, dass die
+  // dynamische Klasse einer Variablen eine von der statischen Klasse abgeleitete Klasse sein kann.
+
+  s1->print(std::cout);
+  s2->print(std::cout);
 
 }
 
 
-
-
-// * --------------- 5.x--------------- * //
-TEST_CASE("TestCase_2    5.x", "[aufgabe 5.x]") {
-
-
-}
 int main(int argc, char *argv[])
 {
   return Catch::Session().run(argc, argv);
