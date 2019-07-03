@@ -2,6 +2,7 @@
 
 #include <sphere.hpp>
 #include <box.hpp>
+#include <triangle.hpp>
 
 #include <catch.hpp>
 #include <glm/glm.hpp>
@@ -203,6 +204,17 @@ von unten nach oben --erst kindklasse dann elternklasse  !!
 // verhalten d construktors gehts schrittweise tiefer in die klassen, der 
 // destructor genau entgegen schrittweise wieder herausgehen 
 }
+
+TEST_CASE("TestCase_5    triangle-check aufg 6.2 ","[aufgabe 6.2]") {
+
+
+  Triangle tri1;                  // check area and volume-method with default-constr
+  //REQUIRE(tri1.volume() == Approx(1));
+  //REQUIRE(tri1.area() == Approx(2));
+
+}
+
+
 int main(int argc, char *argv[])
 {
   return Catch::Session().run(argc, argv);

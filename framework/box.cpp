@@ -25,6 +25,7 @@ Box::~Box(){
 
 
 float Box::area() const {        // Formel checken !!!
+
   if((min_.x > max_.x) || (min_.y > max_.y) || (min_.z > max_.z)){
     std::cout << "\nyour min and max values are incorrect !\n";
     return -1.0f;
@@ -37,6 +38,7 @@ float Box::area() const {        // Formel checken !!!
 }
 
 float Box::volume() const {  // Formel checken !!!
+
   if((min_.x > max_.x) || (min_.y > max_.y) || (min_.z > max_.z)){
     std::cout << "\nyour min and max values are incorrect !\n";
     return -1.0f;
@@ -46,6 +48,7 @@ float Box::volume() const {  // Formel checken !!!
   float z = max_.z - min_.z;
   
   return (x*y*z);
+  
 }
 
 std::ostream& Box::print(std::ostream& os) const {
