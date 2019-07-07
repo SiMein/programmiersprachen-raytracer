@@ -228,7 +228,13 @@ TEST_CASE("TestCase_5    triangle-check aufg 6.2 ","[aufgabe 6.2]") {
   REQUIRE(t10.intersect(r5,fl10) == true);
 
   Material material1;
-  //std::cout << material1;
+  material1.name = "alfons";
+  std::cout << material1;
+
+  Color co99{1.0,1.0,1.0};
+  Material material2{"hugo", co99, co99, co99, fl10};
+  std::cout << material2;
+  
 
 }
 
