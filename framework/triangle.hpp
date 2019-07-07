@@ -14,7 +14,9 @@ class Triangle : public Shape { // abgeleitete Klasse und ableitende Klasse
 
     /* virtual */ float area() const override ;
     /* virtual */ float volume () const override ;  // Dreieck ist Fläche --wie soll das gehen ???  
+    /* virtual */ bool intersect(Ray const& ray, float& t) const override;
     /* virtual */ std::ostream& print(std::ostream& os) const override;
+ 
 
   
     private:  //  private auch bei ableitenden Klassen oder protected oder auch public ??

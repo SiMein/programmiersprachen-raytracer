@@ -36,11 +36,22 @@ float Triangle::volume() const {  // Formel checken !!!
   //  std::cout << "\nyour min and max values are incorrect !\n";
     return -1.0f;
 }
+/*
+bool Triangle::intersect(Ray const& ray, float& t) const{
+  return true;
+}
+*/
 
+
+bool Triangle::intersect(Ray const& ray, float& t) const{
+
+  return true;
+}
 
 std::ostream& Triangle::print(std::ostream& os) const {
   Shape::print(os); // print methode der basisklasse wir mit augerufen -für basis attributausgabe
-  /* os << "Minimum : " << min_.x << "\t" << min_.y << "\t" << min_.z << "\n"
+  return os;
+  /*return os << "Minimum : " << min_.x << "\t" << min_.y << "\t" << min_.z << "\n"
      << "Maximum : " << max_.x << "\t" << max_.y << "\t" << max_.z << "\n";*/
 }
 
