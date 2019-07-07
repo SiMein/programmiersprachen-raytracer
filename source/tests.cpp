@@ -3,6 +3,7 @@
 #include <sphere.hpp>
 #include <box.hpp>
 #include <triangle.hpp>
+#include "material.hpp"
 
 #include <catch.hpp>
 #include <glm/glm.hpp>
@@ -57,7 +58,7 @@ TEST_CASE("TestCase_1    5.1, 5.2, 5.3, 5.4, 5.5", "[aufgabe 5.1,5.2,5.3,5.4,5.5
 }
 
 
-TEST_CASE (" TestCase_2    intersect_ray_sphere", "[intersect]"){
+TEST_CASE (" TestCase_2    intersect_HitPoint_ray_sphere", "[p]"){
   // Ray
   glm::vec3 ray_origin{0.0f, 0.0f, 0.0f};
   // ray direction has to be normalized !
@@ -68,7 +69,7 @@ TEST_CASE (" TestCase_2    intersect_ray_sphere", "[intersect]"){
   glm::vec3 sphere_center{0.0f ,0.0f, 5.0f};
   float sphere_radius{1.0f};
   float distance = 0.0f;
-  auto result = glm::intersectRaySphere (ray_origin ,ray_direction ,sphere_center ,
+  auto result = glm::intersectRaySphere(ray_origin ,ray_direction ,sphere_center ,
   sphere_radius * sphere_radius , // squared radius !!!
   distance );
 
@@ -80,7 +81,7 @@ TEST_CASE (" TestCase_2    intersect_ray_sphere", "[intersect]"){
 
   std::cout << s1 << "\n  this last was s1 print out \n";
   HitPoint h1;
-  h1 = s1.intersect(r1);      // check, ob attribute in hitpoint uebertragen wurden bei treffer !!
+  h1 = s1.intersect_Hitpoint(r1);      // check, ob attribute in hitpoint uebertragen wurden bei treffer !!
   REQUIRE(h1.cross == true);
   REQUIRE(h1.t == 0.0f);
   REQUIRE(h1.name == "franz");
@@ -97,7 +98,7 @@ TEST_CASE (" TestCase_2    intersect_ray_sphere", "[intersect]"){
   HitPoint h2;
   Color co2{0.7f,0.7f,0.7f}; 
   Sphere s2{{5.5,1.0,8.0},{1.0},"schorsch", co2};
-  h2 = s2.intersect(r1);      // check, ob attribute in hitpoint uebertragen wurden wenn KEIN !! treffer
+  h2 = s2.intersect_Hitpoint(r1);      // check, ob attribute in hitpoint uebertragen wurden wenn KEIN !! treffer
   REQUIRE(h2.cross == false);
   REQUIRE(h2.t == 0.0f);
   REQUIRE(h2.name == "default-HitPoint");
@@ -205,12 +206,29 @@ von unten nach oben --erst kindklasse dann elternklasse  !!
 // destructor genau entgegen schrittweise wieder herausgehen 
 }
 
+
+
+// * --------------- Aufgabenblatt 6  !!!!-------------- * //
 TEST_CASE("TestCase_5    triangle-check aufg 6.2 ","[aufgabe 6.2]") {
 
+  std::cout << "\n--------------- Aufgabenblatt 6  !!!!--------------\n";
 
-  Triangle tri1;                  // check area and volume-method with default-constr
-  //REQUIRE(tri1.volume() == Approx(1));
-  //REQUIRE(tri1.area() == Approx(2));
+  Triangle tri1;         // check area and volume-method tiangle !!!!    with default-constr
+  REQUIRE(tri1.volume() == Approx(-1.0f));
+  REQUIRE(tri1.area() == Approx(-1.0f));
+
+  Ray r5;
+  float fl10 = 6.0;
+  Sphere s10;
+  Box b10;
+  Triangle t10;
+
+  REQUIRE(s10.intersect(r5,fl10) == true);
+  REQUIRE(b10.intersect(r5,fl10) == true);
+  REQUIRE(t10.intersect(r5,fl10) == true);
+
+  Material material1;
+  //std::cout << material1;
 
 }
 

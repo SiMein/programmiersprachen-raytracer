@@ -51,9 +51,15 @@ float Box::volume() const {  // Formel checken !!!
   
 }
 
+
+bool Box::intersect(Ray const& ray, float& t) const{
+
+  return true;
+}
+
 std::ostream& Box::print(std::ostream& os) const {
   Shape::print(os); // print methode der basisklasse wir mit augerufen -für basis attributausgabe
-  os << "Minimum : " << min_.x << "\t" << min_.y << "\t" << min_.z << "\n"
+  return os << "Minimum : " << min_.x << "\t" << min_.y << "\t" << min_.z << "\n"
      << "Maximum : " << max_.x << "\t" << max_.y << "\t" << max_.z << "\n";
 }
 

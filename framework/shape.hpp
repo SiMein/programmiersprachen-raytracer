@@ -4,6 +4,9 @@
 #include <ctgmath>
 #include <string>
 #include "color.hpp"
+#include "ray.hpp"
+#include <glm/gtx/intersect.hpp>
+#include "hitPoint.hpp"
 
 class Shape {
     public:
@@ -13,6 +16,7 @@ class Shape {
 
     virtual float area() const = 0; // method wird hier in abstrakter Klasse zugesichert, spezifische Implement dann in child-classes 
     virtual float volume() const = 0; // dito                       // daher spez. Implem in cpp von shape NICHT nötig 
+    virtual bool intersect(Ray const& ray, float& t) const = 0;
     virtual std::ostream& print(std::ostream& os) const;
 
     

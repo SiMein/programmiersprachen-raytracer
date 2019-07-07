@@ -13,7 +13,8 @@ class Box : public Shape { // abgeleitete Klasse und ableitende Klasse
     ~Box();
 
     /* virtual */ float area() const override ;
-    /* virtual */ float volume () const override ;
+    /* virtual */ float volume() const override ;
+    /* virtual */ bool intersect(Ray const& ray, float& t) const override;
     /* virtual */ std::ostream& print(std::ostream& os) const override;
 
   

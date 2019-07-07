@@ -39,7 +39,7 @@ float Sphere::volume() const{  // Formel checken !!!
 }
 
 // warum t  distance auf 0 setzen ??
-HitPoint Sphere::intersect(Ray const& r) const{
+HitPoint Sphere::intersect_Hitpoint(Ray const& r) const{
   float t1 = 0.0f;
   bool crossed = glm::intersectRaySphere(r.origin,glm::normalize(r.direction),center_,(radius_*radius_),t1);
   HitPoint h;
@@ -56,8 +56,13 @@ HitPoint Sphere::intersect(Ray const& r) const{
   return h;
 }
 
+bool Sphere::intersect(Ray const& ray, float& t) const{
+
+  return true;
+}
+
 std::ostream& Sphere::print(std::ostream& os) const{ 
   Shape::print(os);   // print methode der basisklasse wir mit augerufen -für basis attributausgabe
-  os << "Center : " << center_.x << "\t" << center_.y << "\t" << center_.z << "\n"
+  return os << "Center : " << center_.x << "\t" << center_.y << "\t" << center_.z << "\n"
      << "Radius : " << radius_ << "\n";
 }
