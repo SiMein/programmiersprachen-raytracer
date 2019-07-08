@@ -37,9 +37,11 @@ TEST_CASE("TestCase_1    5.1, 5.2, 5.3, 5.4, 5.5", "[aufgabe 5.1,5.2,5.3,5.4,5.5
 
   
   Color co1{0.5,0.5,0.5};         // constr with 4 parameters
+  float fl55 = 55.0f;
+  std::shared_ptr<Material> material55 = std::make_shared<Material>("anna1",co1,co1,co1,fl55);
 
-  Sphere sph4{{1.0,1.0,1.0},{11.0},"heinz", co1}; 
-  Box bo4{{0.0f, 0.0f, 0.0f},{1.0f, 1.0f,1.0},"hugo",co1}; 
+  Sphere sph4{{1.0,1.0,1.0},{11.0},"heinz", material55}; 
+  Box bo4{{0.0f, 0.0f, 0.0f},{1.0f, 1.0f,1.0},"hugo",material55}; 
   //REQUIRE(bo1.name_ == "hugo"); // Attributzugriff auf name von abgeleiteter klasse hindurch zur basisklasse mgl., dafür aber 
   //muesste umstellen von protected auf public, oder ueber getter-methode in kindklasse weil d test klasse hier sich ausserhalb befindet
   //dafuer print ausgabe  aufg 5.4. vorgesehen ...
@@ -77,7 +79,10 @@ TEST_CASE (" TestCase_2    intersect_HitPoint_ray_sphere", "[p]"){
 
   Color co1{1.0f,1.0f,1.0f}; 
   Ray r1{{0.0f,0.0f,0.0f},{1.0f,0.0f,0.0f}};
-  Sphere s1{{1.0,0.0,0.0},{0.5},"franz", co1};
+  float fl55 = 55.0f;
+  std::shared_ptr<Material> material66 = std::make_shared<Material>("anna2",co1,co1,co1,fl55);
+
+  Sphere s1{{1.0,0.0,0.0},{0.5},"franz", material66};
 
   std::cout << s1 << "\n  this last was s1 print out \n";
   HitPoint h1;
@@ -97,7 +102,7 @@ TEST_CASE (" TestCase_2    intersect_HitPoint_ray_sphere", "[p]"){
 
   HitPoint h2;
   Color co2{0.7f,0.7f,0.7f}; 
-  Sphere s2{{5.5,1.0,8.0},{1.0},"schorsch", co2};
+  Sphere s2{{5.5,1.0,8.0},{1.0},"schorsch", material66};
   h2 = s2.intersect_Hitpoint(r1);      // check, ob attribute in hitpoint uebertragen wurden wenn KEIN !! treffer
   REQUIRE(h2.cross == false);
   REQUIRE(h2.t == 0.0f);
@@ -119,11 +124,14 @@ TEST_CASE("TestCase_3    5.7", "[aufgabe 5.7]") {
   std::cout << "\n  aufg 5.7  \n";
   Color red {255,0,0};
   glm::vec3 position{0.0f,0.0f,0.0f};
+  float fl55 = 55.0f;
+  std::shared_ptr<Material> material77 = std::make_shared<Material>("anna3",red,red,red,fl55);
+
 
   // links statischer Typ             rechts dynamischer Typ
-  std::shared_ptr <Sphere>s1 = std::make_shared <Sphere>(position, 1.2f,"sphere0", red);
+  std::shared_ptr <Sphere>s1 = std::make_shared <Sphere>(position, 1.2f,"sphere0", material77);
     // zu s1 - direkter aufruf der sphereprintmethode, da auch mit sphere typisiert
-  std::shared_ptr <Shape>s2 = std::make_shared <Sphere>(position, 1.2f,"sphere1", red);
+  std::shared_ptr <Shape>s2 = std::make_shared <Sphere>(position, 1.2f,"sphere1", material77);
     // zu s2 - statischer basisklassentyp , zur laufzeit wird mittels virtueller methode print 
     // die tatsaechliche klasse bzw abgeleitete klasse aufgerufen (dynamisch) 
 // somit letzlich in beiden fällen printausgabe von printmethode aus sphere
@@ -142,7 +150,7 @@ TEST_CASE("TestCase_3    5.7", "[aufgabe 5.7]") {
   s2->print(std::cout);
 
 }
-
+/*
 // * --------------- 5.8--------------- * //
 TEST_CASE("TestCase_4    5.8", "[aufgabe 5.8]") {
 
@@ -150,11 +158,15 @@ TEST_CASE("TestCase_4    5.8", "[aufgabe 5.8]") {
 
   Color red{255,0, 0};
   glm::vec3 position{0.0f,0.0f,0.0f};
+  float fl55 = 55.0f;
+  /*
+  std::shared_ptr<Material> material188 = std::make_shared<Material>{"anna4", red, red, red, fl55};
+ 
 
   std::cout << "\n  create s1   \n";
-  Sphere* s1 = new Sphere{position ,1.5f,"sphere0",red} ; // per * erzeugung des objekts auf dem freestore
+  Sphere* s1 = new Sphere{position ,1.5f,"sphere0",material188} ; // per * erzeugung des objekts auf dem freestore
   std::cout << "\n  create s2   \n";
-  Shape* s2 = new Sphere{position ,1.5f,"sphere1",red};
+  Shape* s2 = new Sphere{position ,1.5f,"sphere1",material188};
   std::cout << "\n  create b1   \n";
   Box* b1 = new Box; // per * erzeugung des objekts auf dem freestore
   std::cout << "  create b2   \n";
@@ -173,6 +185,8 @@ TEST_CASE("TestCase_4    5.8", "[aufgabe 5.8]") {
   delete b1;
   std::cout << "\ndelete b2 : \n";
   delete b2;
+
+
 /*
 bei erzeugung eines objektes wird immer standardmaessig erst der basisklassenkonstructor 
 , dann der kinsklassenkonstructor aufgerufen */
@@ -204,7 +218,7 @@ von unten nach oben --erst kindklasse dann elternklasse  !!
 
 // verhalten d construktors gehts schrittweise tiefer in die klassen, der 
 // destructor genau entgegen schrittweise wieder herausgehen 
-}
+// }
 
 
 

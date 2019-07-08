@@ -12,8 +12,8 @@ Sphere::Sphere(glm::vec3 const& center,float radius) :      // custom-constr-Sph
   center_ {center},
   radius_ {radius}{/*std::cout << "I am the Sphere-contruktor !";*/}
 
-Sphere::Sphere(glm::vec3 const& center,float radius,std::string name,Color color) :      // custom-constr-Sphere  4 parameter
-  Shape::Shape{name, color},  // Parameter werden weitergereicht an den konstr der basisklasse für die entspr. parameter
+Sphere::Sphere(glm::vec3 const& center,float radius,std::string name, std::shared_ptr<Material> const& ma_co) :      // custom-constr-Sphere  4 parameter
+  Shape::Shape{name, ma_co},  // Parameter werden weitergereicht an den konstr der basisklasse für die entspr. parameter
   center_ {center},
   radius_ {radius}{/* std::cout << "I am the Sphere-contruktor !";*/}
 
@@ -47,7 +47,7 @@ HitPoint Sphere::intersect_Hitpoint(Ray const& r) const{
     h.cross = crossed;  // bool
     h.t = 0.0f;  // distance to cut
     h.name = name_;  // name des objektes das geschnitten wurde, auf d hier aufgerufenen sphere
-    h.co = color_;   // color des objektes das geschnitten wurde, auf d hier aufgerufenen sphere
+    // h.co = color_;   DEAKTIVIERT WEGEN SHARED_PTR für MATERIAL// color des objektes das geschnitten wurde, auf d hier aufgerufenen sphere
     //glm::vec3 cro_p =
     h.crossPoint = r.origin + t1 * r.direction;  // berechnung nach vorgeg. formel aus aufg 5.6
     //glm::vec3 cro_p; // crosspoint

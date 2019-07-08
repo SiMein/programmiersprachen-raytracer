@@ -14,8 +14,8 @@ Box::Box(glm::vec3 const& min,glm::vec3 const& max) :   // custom-constr-Sphere 
   min_ {min},
   max_ {max}{/*std::cout << "I am the Box-contructor !";*/}
 
-Box::Box(glm::vec3 const& min,glm::vec3 const& max,std::string name,Color color) :  // custom-constr-Sphere 4 param
-  Shape::Shape{name,color},  // Parameter werden weitergereicht an den konstr der basisklasse für die entspr. parameter
+Box::Box(glm::vec3 const& min,glm::vec3 const& max,std::string name, std::shared_ptr<Material> const& ma_co) :  // custom-constr-Sphere 4 param
+  Shape::Shape{name,ma_co},  // Parameter werden weitergereicht an den konstr der basisklasse für die entspr. parameter
   min_ {min},
   max_ {max}{/*std::cout << "I am the Box-contructor !";*/}
 

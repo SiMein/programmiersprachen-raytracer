@@ -11,7 +11,7 @@ class Sphere : public Shape{
     public:
     Sphere(); // Default-constr.
     Sphere(glm::vec3 const& center, float radius);  // Custom-constr. 2 param
-    Sphere(glm::vec3 const& center,float radius,std::string name,Color color); // Custom-constr-  4 param
+    Sphere(glm::vec3 const& center,float radius,std::string name, std::shared_ptr<Material> const& ma_co); // Custom-constr-  4 param
     ~Sphere();
 
     HitPoint intersect_Hitpoint(Ray const& r) const;
