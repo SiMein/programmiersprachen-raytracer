@@ -6,7 +6,7 @@
 #include <iostream>
 
 struct Material{
-    std::string name;
+    std::string name = "default material";
     Color ka; //Materialkoeffizienten ka,kd,ks
     Color kd;
     Color ks;

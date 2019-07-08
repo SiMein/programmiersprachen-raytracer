@@ -28,13 +28,13 @@ Triangle::~Triangle(){
 float Triangle::area() const {        // Formel checken !!!
   //if((min_.x > max_.x) || (min_.y > max_.y) || (min_.z > max_.z)){
   //  std::cout << "\nyour min and max values are incorrect !\n";
-    return -1.0f;
+    return 1.0f;
 }
 
 float Triangle::volume() const {  // Formel checken !!!
   //if((min_.x > max_.x) || (min_.y > max_.y) || (min_.z > max_.z)){
   //  std::cout << "\nyour min and max values are incorrect !\n";
-    return -1.0f;
+    return 0.0f;
 }
 /*
 bool Triangle::intersect(Ray const& ray, float& t) const{
