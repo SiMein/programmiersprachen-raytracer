@@ -9,7 +9,7 @@ class Triangle : public Shape { // abgeleitete Klasse und ableitende Klasse
     public:
     Triangle(); // Defaul-constr., mit default-Werten
     //Triangle(glm::vec3 const& min_,glm::vec3 const& max_); // Custom-constr.2 param
-    //Triangle(glm::vec3 const& min_,glm::vec3 const& max_,std::string name_,Color color_); // Custom-constr.4 param
+    //Triangle(glm::vec3 const& min_,glm::vec3 const& max_,std::string name_, std::shared_ptr<Material> const& ma_co); // Custom-constr.4 param
     ~Triangle();
 
     /* virtual */ float area() const override ;
