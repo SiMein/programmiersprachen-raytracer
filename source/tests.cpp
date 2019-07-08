@@ -150,7 +150,7 @@ TEST_CASE("TestCase_3    5.7", "[aufgabe 5.7]") {
   s2->print(std::cout);
 
 }
-/*
+
 // * --------------- 5.8--------------- * //
 TEST_CASE("TestCase_4    5.8", "[aufgabe 5.8]") {
 
@@ -159,7 +159,7 @@ TEST_CASE("TestCase_4    5.8", "[aufgabe 5.8]") {
   Color red{255,0, 0};
   glm::vec3 position{0.0f,0.0f,0.0f};
   float fl55 = 55.0f;
-  /*
+  
   std::shared_ptr<Material> material188 = std::make_shared<Material>{"anna4", red, red, red, fl55};
  
 
@@ -250,6 +250,16 @@ TEST_CASE("TestCase_5    triangle-check aufg 6.2 ","[aufgabe 6.2]") {
   std::cout << material2;
   
 
+}
+// * --------------- --------------------------------- * //
+TEST_CASE("TestCase_6    triangle-check aufg 6.5 ","[aufgabe 6.5]") {
+
+TEST_CASE("Scene test") {
+	std::shared_ptr<Scene> scene = std::make_shared<Scene>(); //erzeugt Zeiger auf Scene-objekt (struct)
+	get_SDF_File("C:\\scene.sdf",*scene);  // einlesen d pfades als string, derefer. zeiger auf scene-objekt
+
+	std::cout<<"Search result:"<<*search_for_material("red",*scene)<<"\n";
+	REQUIRE(search_for_material("black",*scene)==nullptr);
 }
 
 
