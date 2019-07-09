@@ -7,10 +7,10 @@
 
 struct Material{
     std::string name = "default material";
-    Color ka; //Materialkoeffizienten ka,kd,ks
-    Color kd;
-    Color ks;
-    float m;// Spekularreflexionsexponenten
+    Color ka = {0.33,0.33,0.33}; //Materialkoeffizienten ka,kd,ks
+    Color kd = {0.44,0.44,0.44};
+    Color ks = {0.55,0.55,0.55};
+    float m = 0.0;  // Spekularreflexionsexponenten
 
     friend std::ostream& operator<<(std::ostream& os, Material const& m1){ // geht nur mit friend, + 2 referenz-args
     
