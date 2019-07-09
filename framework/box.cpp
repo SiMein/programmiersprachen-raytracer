@@ -53,8 +53,26 @@ float Box::volume() const {  // Formel checken !!!
 
 
 HitPoint Box::intersect(Ray const& ray) const{
-  HitPoint h1;
-  return h1;
+
+  HitPoint h;
+
+  if((min_.x > max_.x) || (min_.y > max_.y) || (min_.z > max_.z)){
+    std::cout << "\nyour min and max values are incorrect !\n";
+    return h;
+  } 
+  float t1 = 0.0f;
+  bool crossed = false; //= glm::intersectRaySphere(r.origin,glm::normalize(r.direction),center_,(radius_*radius_),t1);
+  if (crossed){
+    h.cross = crossed;  // bool
+    h.t = 0.0f;  // distance to cut
+    h.name = name_;  // name des objektes das geschnitten wurde, auf d hier aufgerufenen sphere
+    // h.co = color_;   DEAKTIVIERT WEGEN SHARED_PTR für MATERIAL// color des objektes das geschnitten wurde, auf d hier aufgerufenen sphere
+    //glm::vec3 cro_p =
+    //h.crossPoint = r.origin + t1 * r.direction;  // berechnung nach vorgeg. formel aus aufg 5.6
+    //glm::vec3 cro_p; // crosspoint
+    //h.direction = r.direction; // direction
+  }
+  return h;
 }
 
 std::ostream& Box::print(std::ostream& os) const {

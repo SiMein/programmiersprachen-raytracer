@@ -58,6 +58,6 @@ HitPoint Sphere::intersect(Ray const& r) const{
 
 std::ostream& Sphere::print(std::ostream& os) const{ 
   Shape::print(os);   // print methode der basisklasse wir mit augerufen -für basis attributausgabe
-  return os << "Center : " << center_.x << "\t" << center_.y << "\t" << center_.z << "\n"
-     << "Radius : " << radius_ << "\n";
+//  return os << "Center : " << center_.x << "\t" << center_.y << "\t" << center_.z << "\n"
+//     << "Radius : " << radius_ << "\n";
 }

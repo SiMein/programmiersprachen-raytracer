@@ -13,7 +13,7 @@
 // * --------------- 5.1, 5.2, 5.3, 5.4, 5.5 --------------- * //
 TEST_CASE("TestCase_1    5.1, 5.2, 5.3, 5.4, 5.5", "[aufgabe 5.1,5.2,5.3,5.4,5.5]") {
 
-/*
+
   Sphere sph1;                  // check area and volume-method with default-constr
   REQUIRE(sph1.volume() == Approx(4.18879f));
   REQUIRE(sph1.area() == Approx(12.56637f));
@@ -48,17 +48,17 @@ TEST_CASE("TestCase_1    5.1, 5.2, 5.3, 5.4, 5.5", "[aufgabe 5.1,5.2,5.3,5.4,5.5
   //dafuer print ausgabe  aufg 5.4. vorgesehen ...
 
   std::cout << "\nprintout by call method print() \n";
-  sph1.print(std::cout);
+//    sph1.print(std::cout);
   sph4.print(std::cout); // Direkter aufruf der printmethode --achtung in-parameter hier beachten 
-  bo1.print(std::cout); 
-  bo2.print(std::cout);  
+//  bo1.print(std::cout); 
+  bo4.print(std::cout);  
   std::cout << "\nprintout by call operator << \n";
-  std::cout << sph1 << "\n";
+//  std::cout << sph1 << "\n";
   std::cout << sph4 << "\n";
-  std::cout << bo1 << "\n";
-  std::cout << bo2 << "\n";
+//  std::cout << bo1 << "\n";
+  std::cout << bo4 << "\n";
 
-*/
+
 }
 
 
@@ -231,9 +231,12 @@ TEST_CASE("TestCase_5    triangle-check aufg 6.2 ","[aufgabe 6.2]") {
 
   std::cout << "\n--------------- Aufgabenblatt 6  !!!!--------------\n";
 
+  // Darstellung des UML Diagramms mittels UML-Links --online  siehe Anhang !!!
+
+
   Triangle tri1;         // check area and volume-method tiangle !!!!    with default-constr
-  REQUIRE(tri1.volume() == Approx(0.0f));
-  REQUIRE(tri1.area() == Approx(1.0f));
+  REQUIRE(tri1.volume() == Approx(0.0f));  //  ofcourse its 0  because its 2D
+  REQUIRE(tri1.area() == Approx(1.0f));   // have to fill the exact funktion later
 
   Ray r5;
   float fl10 = 6.0;
@@ -251,8 +254,53 @@ TEST_CASE("TestCase_5    triangle-check aufg 6.2 ","[aufgabe 6.2]") {
   
 
 }
+
+TEST_CASE("TestCase_6    intersect with box  aufg 6.3 ","[aufgabe 6.3]") {
+ 
+ 
+  Color co1{1.0f,1.0f,1.0f}; 
+  Ray r1{{0.0f,0.0f,0.0f},{1.0f,0.0f,0.0f}};
+  float fl55 = 55.0f;
+  std::shared_ptr<Material> material66 = std::make_shared<Material>(Material{"anna2",co1,co1,co1,fl55});
+  
+  Box b1{{0.0f, 0.0f, 0.0f},{1.0f, 1.0f,1.0},"fritz", material66};
+
+  std::cout << b1 << "\n  this last was s1 print out \n";
+  HitPoint h1;
+  h1 = b1.intersect(r1);      // check, ob attribute in hitpoint uebertragen wurden bei treffer !!
+  REQUIRE(h1.cross == false);
+  REQUIRE(h1.t == 0.0f);
+  REQUIRE(h1.name == "default-HitPoint");
+  REQUIRE(h1.co.r == 0.0f);// Color-einzel-attrib-pruefung !!! deaktiviert wegen fehler nach intersec-meth aenderung !!
+                            // weil Material default Fehler ??
+  REQUIRE(h1.co.g == 0.0f);
+  REQUIRE(h1.co.b == 0.0f);
+  REQUIRE(h1.crossPoint.x == 0.0f);   // vec3-einzel-attrib-pruefung
+  REQUIRE(h1.crossPoint.y == 0.0f);
+  REQUIRE(h1.crossPoint.z == 0.0f);
+  REQUIRE(h1.direction.x == 0.0f);   // vec3-einzel-attrib-pruefung
+  REQUIRE(h1.direction.y == 0.0f);
+  REQUIRE(h1.direction.z == 0.0f);
+
+  HitPoint h2;
+  Color co2{0.7f,0.7f,0.7f}; 
+  Box b2{{0.0f, 0.0f, 0.0f},{1.0f, 1.0f,1.0},"fredi", material66};
+  h2 = b2.intersect(r1);      // check, ob attribute in hitpoint uebertragen wurden wenn KEIN !! treffer
+  REQUIRE(h2.cross == false);
+  REQUIRE(h2.t == 0.0f);
+  REQUIRE(h2.name == "default-HitPoint");
+  REQUIRE(h2.co.r == 0.0f);   // Color-einzel-attrib-pruefung
+  REQUIRE(h2.co.g == 0.0f);
+  REQUIRE(h2.co.b == 0.0f);
+  REQUIRE(h2.crossPoint.x == 0.0f);   // vec3-einzel-attrib-pruefung
+  REQUIRE(h2.crossPoint.x == 0.0f);
+  REQUIRE(h2.crossPoint.x == 0.0f);
+  glm::vec3 test_vec3{0.0,0.0,0.0};   // alternative. -zu erwartendes Objekt vom typ vec3 erstellt
+  REQUIRE(h2.direction == test_vec3); // dann (gesamt)-vergleich zweier vec3 objekte
+
+}
 // * --------------- --------------------------------- * //
-TEST_CASE("TestCase_6    triangle-check aufg 6.5 ","[aufgabe 6.5]") {
+TEST_CASE("TestCase_7   sdf_files  aufg 6.5 ","[aufgabe 6.5]") {
 }
 
 TEST_CASE("Scene test") {
