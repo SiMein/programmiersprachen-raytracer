@@ -52,9 +52,9 @@ float Box::volume() const {  // Formel checken !!!
 }
 
 
-bool Box::intersect(Ray const& ray, float& t) const{
-
-  return true;
+HitPoint Box::intersect(Ray const& ray) const{
+  HitPoint h1;
+  return h1;
 }
 
 std::ostream& Box::print(std::ostream& os) const {

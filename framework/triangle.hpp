@@ -2,6 +2,7 @@
 #define TRIANGLE_HPP
 
 #include "shape.hpp"
+#include "hitPoint.hpp"
 #include <glm/vec3.hpp>
 
 class Triangle : public Shape { // abgeleitete Klasse und ableitende Klasse
@@ -14,7 +15,7 @@ class Triangle : public Shape { // abgeleitete Klasse und ableitende Klasse
 
     /* virtual */ float area() const override ;
     /* virtual */ float volume () const override ;  // Dreieck ist Fläche --wie soll das gehen ???  
-    /* virtual */ bool intersect(Ray const& ray, float& t) const override;
+    /* virtual */ HitPoint intersect(Ray const& ray) const override;
     /* virtual */ std::ostream& print(std::ostream& os) const override;
  
 

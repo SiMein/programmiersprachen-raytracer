@@ -18,7 +18,7 @@ class Shape {
 
     virtual float area() const = 0; // method wird hier in abstrakter Klasse zugesichert, spezifische Implement dann in child-classes 
     virtual float volume() const = 0; // dito                       // daher spez. Implem in cpp von shape NICHT nötig 
-    virtual bool intersect(Ray const& ray, float& t) const = 0;
+    virtual HitPoint intersect(Ray const& ray) const = 0;
     virtual std::ostream& print(std::ostream& os) const;
    
     

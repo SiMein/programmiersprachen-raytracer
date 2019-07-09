@@ -62,7 +62,7 @@ TEST_CASE("TestCase_1    5.1, 5.2, 5.3, 5.4, 5.5", "[aufgabe 5.1,5.2,5.3,5.4,5.5
 }
 
 
-TEST_CASE (" TestCase_2    intersect_HitPoint_ray_sphere", "[p]"){
+TEST_CASE (" TestCase_2    intersect_ray_sphere", "[p]"){
   // Ray
   glm::vec3 ray_origin{0.0f, 0.0f, 0.0f};
   // ray direction has to be normalized !
@@ -88,7 +88,7 @@ TEST_CASE (" TestCase_2    intersect_HitPoint_ray_sphere", "[p]"){
 
   std::cout << s1 << "\n  this last was s1 print out \n";
   HitPoint h1;
-  h1 = s1.intersect_Hitpoint(r1);      // check, ob attribute in hitpoint uebertragen wurden bei treffer !!
+  h1 = s1.intersect(r1);      // check, ob attribute in hitpoint uebertragen wurden bei treffer !!
   REQUIRE(h1.cross == true);
   REQUIRE(h1.t == 0.0f);
   REQUIRE(h1.name == "franz");
@@ -106,7 +106,7 @@ TEST_CASE (" TestCase_2    intersect_HitPoint_ray_sphere", "[p]"){
   HitPoint h2;
   Color co2{0.7f,0.7f,0.7f}; 
   Sphere s2{{5.5,1.0,8.0},{1.0},"schorsch", material66};
-  h2 = s2.intersect_Hitpoint(r1);      // check, ob attribute in hitpoint uebertragen wurden wenn KEIN !! treffer
+  h2 = s2.intersect(r1);      // check, ob attribute in hitpoint uebertragen wurden wenn KEIN !! treffer
   REQUIRE(h2.cross == false);
   REQUIRE(h2.t == 0.0f);
   REQUIRE(h2.name == "default-HitPoint");
@@ -240,10 +240,6 @@ TEST_CASE("TestCase_5    triangle-check aufg 6.2 ","[aufgabe 6.2]") {
   Sphere s10;
   Box b10;
   Triangle t10;
-
-  REQUIRE(s10.intersect(r5,fl10) == true);
-  REQUIRE(b10.intersect(r5,fl10) == true);
-  REQUIRE(t10.intersect(r5,fl10) == true);
 
   Material material1;
   material1.name = "alfons";

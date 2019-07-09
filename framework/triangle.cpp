@@ -36,16 +36,10 @@ float Triangle::volume() const {  // Formel checken !!!
   //  std::cout << "\nyour min and max values are incorrect !\n";
     return 0.0f;
 }
-/*
-bool Triangle::intersect(Ray const& ray, float& t) const{
-  return true;
-}
-*/
 
-
-bool Triangle::intersect(Ray const& ray, float& t) const{
-
-  return true;
+HitPoint Triangle::intersect(Ray const& ray) const{
+  HitPoint h1;
+  return h1;
 }
 
 std::ostream& Triangle::print(std::ostream& os) const {

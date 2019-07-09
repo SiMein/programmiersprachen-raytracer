@@ -3,6 +3,7 @@
 
 #include "shape.hpp"
 #include <glm/vec3.hpp>
+#include "hitPoint.hpp"
 
 class Box : public Shape { // abgeleitete Klasse und ableitende Klasse
     
@@ -14,7 +15,7 @@ class Box : public Shape { // abgeleitete Klasse und ableitende Klasse
 
     /* virtual */ float area() const override ;
     /* virtual */ float volume() const override ;
-    /* virtual */ bool intersect(Ray const& ray, float& t) const override;
+    /* virtual */ HitPoint intersect(Ray const& ray) const override;
     /* virtual */ std::ostream& print(std::ostream& os) const override;
 
   
