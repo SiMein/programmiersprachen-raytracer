@@ -304,9 +304,8 @@ TEST_CASE("TestCase_7   sdf_files  aufg 6.5 ","[aufgabe 6.5]") {
 }
 
 TEST_CASE("Scene test") {
-	std::shared_ptr<Scene> scene = std::make_shared<Scene>(); //erzeugt Zeiger auf Scene-objekt (struct)
-	get_SDF_File("C:\\scene.sdf",*scene);  // einlesen d pfades als string, derefer. zeiger auf scene-objekt
-
+	std::shared_ptr<Scene> sc_1 = std::make_shared<Scene>(); //erzeugt Zeiger auf Scene-objekt (struct) 
+	get_SDF_File("/home/simon/Desktop/scene_1.sdf",*sc_1);  // einlesen d pfades als string, derefer. zeiger auf scene-objekt
 	//std::cout<<"Search result:"<<*search_for_material("red",*scene)<<"\n";
 	//REQUIRE(search_for_material("black",*scene)==nullptr);
 }
