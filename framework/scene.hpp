@@ -92,9 +92,62 @@ static void get_SDF_File(std::string const& path,Scene& scene){      // Freie fk
       }
     }
   }
-
-
   in_file.close();
+}
+
+static std::shared_ptr<Material> search_mat(std::string name, Scene& scene){
+	
+	auto it = scene.map_mat.find(name);
+ 	if(it != scene.map_mat.end()){
+ 		return scene.map_mat.find(name)->second;
+ 	}	
+ 	else
+ 	{
+  	return nullptr;
+  }
+}
+
+static std::shared_ptr<Material> search_vec(std::string name, Scene& scene){
+/*	
+	auto it = scene.vec_mat.find(name);
+ 	if(it != scene.vec_mat.end()){
+ 		return scene.vec_mat.find(name)->second;
+ 	}	
+ 	else
+ 	{  */
+  	return nullptr;
+ // }
+
+ // Variante 2
+/*
+ for( std::shared_ptr<Material> m1 : vec_mat){
+        if(m1->name_ == s){
+            return m;
+        }
+    }
+}
+*/
+}
+
+static std::shared_ptr<Material> search_set(std::string name, Scene& scene){
+	/*
+	auto it = scene.set_mat.find(name);
+ 	if(it != scene.set_mat.end()){
+ 		return scene.set_mat.find(name)->second;
+ 	}	
+ 	else
+ 	{*/
+  	return nullptr;
+ // }
+
+
+// Variante 2
+  /* for( std::shared_ptr<Material> m1 : set_mat){
+        // auto it = set_mat.find(m1);
+        if(s == m1->name_){
+            return m1;
+        }
+} */
 }
 
 #endif // SCENE_HPP

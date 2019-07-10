@@ -9,6 +9,7 @@
 #include <glm/glm.hpp>
 #include <glm/gtx/intersect.hpp>
 #include <scene.hpp>
+#include <memory>
 
 // * --------------- 5.1, 5.2, 5.3, 5.4, 5.5 --------------- * //
 TEST_CASE("TestCase_1    5.1, 5.2, 5.3, 5.4, 5.5", "[aufgabe 5.1,5.2,5.3,5.4,5.5]") {
@@ -306,10 +307,21 @@ TEST_CASE("TestCase_7   sdf_files  aufg 6.5 ","[aufgabe 6.5]") {
 TEST_CASE("Scene test") {
 	std::shared_ptr<Scene> sc_1 = std::make_shared<Scene>(); //erzeugt Zeiger auf Scene-objekt (struct) 
 	get_SDF_File("/home/simon/Desktop/scene_1.sdf",*sc_1);  // einlesen d pfades als string, derefer. zeiger auf scene-objekt
-	//std::cout<<"Search result:"<<*search_for_material("red",*scene)<<"\n";
-	//REQUIRE(search_for_material("black",*scene)==nullptr);
-}
+	std::cout<<"search_mat_printout \n:"<<*search_mat("red",*sc_1)<<"\n"; // liefert zeiger zurück, daher noch dereferenz vor print
+  REQUIRE(search_mat("black",*sc_1)==nullptr); // ausnahmefall wenn keine uebereinstimmung gefunden
+/* 
+  std::shared_ptr<Scene> sc_2 = std::make_shared<Scene>(); //erzeugt Zeiger auf Scene-objekt (struct) 
+	get_SDF_File("/home/simon/Desktop/scene_1.sdf",*sc_2);  // einlesen d pfades als string, derefer. zeiger auf scene-objekt
+  std::cout<<"search_vec_printout :"<<*search_vec("red",*sc_2)<<"\n"; // liefert zeiger zurück, daher noch dereferenz vor print
+  REQUIRE(search_mat("black",*sc_2)==nullptr); // ausnahmefall wenn keine uebereinstimmung gefunden
 
+  std::shared_ptr<Scene> sc_3 = std::make_shared<Scene>(); //erzeugt Zeiger auf Scene-objekt (struct) 
+	get_SDF_File("/home/simon/Desktop/scene_1.sdf",*sc_3);  // einlesen d pfades als string, derefer. zeiger auf scene-objekt
+  std::cout<<"search_set_printout :"<<*search_set("red",*sc_3)<<"\n"; // liefert zeiger zurück, daher noch dereferenz vor print
+  REQUIRE(search_mat("black",*sc_3)==nullptr); // ausnahmefall wenn keine uebereinstimmung gefunden
+*/
+
+}
 
 int main(int argc, char *argv[])
 {
